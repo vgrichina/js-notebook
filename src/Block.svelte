@@ -39,10 +39,30 @@
     import { onMount } from 'svelte';
     import { notebook } from './stores';
 
+    import Result from './Result';
+
     export let block;
     export let index;
 
     let textarea;
+
+    function resultToJSON(result) {
+        console.log('resultToJSON', result);
+        // TODO: Different handlers for different JS objects
+        return {
+            type: 'Text',
+            text: `${result}`
+        }
+    }
+
+    function errorToJSON(error) {
+        return {
+            type: 'Error',
+            message: error.toString(),
+            stack: error.stack,
+            text: [`${error}`, error.stack].join('\n')
+        }
+    }
 
     function evalCode(code) {
         // TODO: Maintain global context
@@ -54,9 +74,9 @@
         }
         try {
             const result = vm.runInNewContext(code, evalContext);
-            return { result, logs };
+            return { result: resultToJSON(result), logs };
         } catch (e) {
-            return { result: e, logs };
+            return { result: errorToJSON(e), logs };
         }
     }
 
@@ -114,5 +134,7 @@
     {#if block.logs}
         <pre>{block.logs.join('\n')}</pre>
     {/if}
-    <pre>{block.result}</pre>
+    {#if block.result && block.result.type}
+        <Result result={block.result} />
+    {/if}
 </div>

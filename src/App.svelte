@@ -17,6 +17,6 @@
     <h1>{notebookId}</h1>
 
     {#each $notebook.blocks as block, index (block.id)}
-        <Block block={block} index={index} }></Block>
+        <Block block={block} index={index}></Block>
     {/each}
 </div>
