@@ -38,10 +38,12 @@
         if (event.key == 'Enter') {
             if (event.shiftKey) {
                 notebook.update(updateResult(index, eval(block.code)));
+                event.preventDefault();
             }
 
             if (event.metaKey) {
                 notebook.update(newBlock(index + 1));
+                event.preventDefault();
             }
         }
     }
