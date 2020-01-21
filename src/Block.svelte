@@ -37,11 +37,11 @@
         console.log('key press', event);
         if (event.key == 'Enter') {
             if (event.shiftKey) {
-                block.result = eval(block.code);
+                notebook.update(updateResult(index, eval(block.code)));
             }
 
             if (event.metaKey) {
-                newBlock(index + 1);
+                notebook.update(newBlock(index + 1));
             }
         }
     }
@@ -50,25 +50,28 @@
         console.log('key up', event);
         if (event.key == 'Backspace') {
             if (block.code == "") {
-                deleteBlock(index)
+                notebook.update(deleteBlock(index))
             }
         }
     }
-    
-    function newBlock(index) {
+
+    const updateResult = (index, result) => ({ blocks, ...rest }) => ({
+        ...rest,
+        blocks: [...blocks.slice(0, index), { ...blocks[index], result }, ...blocks.slice(index + 1)]
+    })
+
+    const newBlock = (index) => {
         const id = `${Date.now()}-${Math.random()}`;
-        notebook.update(({ blocks, ...rest }) => ({
+        return ({ blocks, ...rest }) => ({
             ...rest,
             blocks: [...blocks.slice(0, index), { id, code: "", result: "" }, ...blocks.slice(index)]
-        }))
+        })
     }
     
-    function deleteBlock(index) {
-        notebook.update(({ blocks, ...rest }) => ({
-            ...rest,
-            blocks: [...blocks.slice(0, index), ...blocks.slice(index + 1)]
-        }))
-    }
+    const deleteBlock = (index) => ({ blocks, ...rest }) => ({
+        ...rest,
+        blocks: [...blocks.slice(0, index), ...blocks.slice(index + 1)]
+    })
 
     onMount(() => {
         textarea.focus();

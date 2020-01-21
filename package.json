@@ -9,5 +9,8 @@
     },
     "browserslist": [
         "last 1 chrome versions"
-    ]
+    ],
+    "dependencies": {
+        "svelte-backed-store": "^1.1.1"
+    }
 }
