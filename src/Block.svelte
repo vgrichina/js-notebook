@@ -61,7 +61,8 @@
         }
     }
 
-    const SERVER_URL = 'http://localhost:8010/proxy';
+    //const SERVER_URL = 'http://localhost:8010/proxy';
+    const SERVER_URL = 'http://localhost:3000';
     async function doEval(code) {
         // TODO: Switch between local and server
         if (false) {
