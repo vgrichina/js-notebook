@@ -32,9 +32,12 @@
 </script>
 
 <script>
+    import fetchJson from 'fetch-json';
+
     import { onMount } from 'svelte';
+
     import { notebook } from './stores';
-    import { evalCode } from './eval';
+    import { evalCode, errorToJSON } from './eval';
 
     import Result from './Result';
 
@@ -47,7 +50,7 @@
         console.log('key press', event);
         if (event.key == 'Enter') {
             if (event.shiftKey) {
-                notebook.update(updateResult(index, evalCode(block.code)));
+                evalResult();
                 event.preventDefault();
             }
 
@@ -56,6 +59,23 @@
                 event.preventDefault();
             }
         }
+    }
+
+    const SERVER_URL = 'http://localhost:8010/proxy';
+    async function doEval(code) {
+        // TODO: Switch between local and server
+        if (false) {
+            return evalCode(code);
+        } else {
+            return fetchJson.post(`${SERVER_URL}/eval`, { code });
+        }
+    }
+
+    function evalResult() {
+        notebook.update(updateResult(index, {}));
+        doEval(block.code)
+            .then(result => notebook.update(updateResult(index, result)))
+            .catch(error => notebook.update(updateResult(index, errorToJSON(error))));
     }
 
     function handleKeyUp(event) {

@@ -39,4 +39,4 @@ function evalCode(code) {
 }
 
 
-module.exports = { evalCode }
+module.exports = { evalCode, errorToJSON }

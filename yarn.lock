@@ -2424,6 +2424,11 @@ fastparse@^1.1.1:
   resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.2.tgz#91728c5a5942eced8531283c79441ee4122c35a9"
   integrity sha512-483XLLxTVIwWK3QTrMGRqUfUpoOs/0hbQrl2oz4J0pAcm3A3bu84wxTFqGqkJzewCLdME38xJLJAxBABfQT8sQ==
 
+fetch-json@^2.2.6:
+  version "2.2.6"
+  resolved "https://registry.yarnpkg.com/fetch-json/-/fetch-json-2.2.6.tgz#9c6c26af33a2cc7d96c83875055726b3d7f372b5"
+  integrity sha512-aryq3t25ZcnpMk0PgDMAPkz0GUoxjUe5LwymCgHdQ4IDjoTRY61w3XY1heetiqLCcq7eF2i9kQ9Bp7rCPpIWsA==
+
 file-uri-to-path@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz#553a7b8446ff6f684359c445f1e37a05dacc33dd"
@@ -5023,6 +5028,11 @@ semver@^6.3.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"
   integrity sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
+
+send-json@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/send-json/-/send-json-2.0.0.tgz#3afc2086a4796cfcbc7f03ccfaee1546fb260a48"
+  integrity sha1-OvwghqR5bPy8fwPM+u4VRvsmCkg=
 
 send@0.17.1:
   version "0.17.1"
