@@ -6,5 +6,8 @@
         "parcel-bundler": "^1.12.4",
         "parcel-plugin-svelte": "^4.0.5",
         "svelte": "^3.17.1"
-    }
+    },
+    "browserslist": [
+        "last 1 chrome versions"
+    ]
 }
