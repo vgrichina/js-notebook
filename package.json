@@ -20,7 +20,7 @@
         "koa-logger": "^3.2.1",
         "koa-router": "^7.4.0",
         "koa-static": "^5.0.0",
-        "node-fetch": "^2.6.0",
+        "node-fetch": "^3.1.1",
         "send-json": "^2.0.0",
         "svelte-backed-store": "^1.1.1"
     }
